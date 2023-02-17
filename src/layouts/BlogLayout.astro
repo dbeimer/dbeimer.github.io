@@ -1,46 +1,61 @@
 ---
-import {MDXLayoutProps} from 'astro'
-import MainLayout from '../layouts/MainLayout.astro'
-type Props=MDXLayoutProps<{
-  title:string,
-  author:string,
-  date:string,
-  heroImage:string,
-}>
+import { MDXLayoutProps } from "astro";
+import MainLayout from "../layouts/MainLayout.astro";
+type Props = MDXLayoutProps<{
+  title: string;
+  author: string;
+  date: string;
+  heroImage: string;
+}>;
 
 const { frontmatter } = Astro.props;
 ---
+
 <MainLayout>
-<div>
-<div 
-  class={`h-80 bg-cover bg-center ${frontmatter.heroImage?'':'bg-purple-300'} -mx-4 md:rounded`} 
-  style={`background-image:url('${frontmatter.heroImage}') ;`}></div>
-<div class="text-center">
-  <h1 class="mt-4 text-2xl text-bold">{frontmatter.title}</h1>
-  <p class="mb-4 text-gray-500 dark:text-gray-400">
-    <span class="text-bold">{frontmatter.author}</span>
-     - 
-    <span class="text-sm">{frontmatter.date}</span>
-  </p>
-</div>
-<slot/>
-</div>
+  <div>
+    <div
+      class={`h-80 bg-cover bg-center ${
+        frontmatter.heroImage ? "" : "bg-purple-300"
+      } -mx-4 md:rounded`}
+      style={`background-image:url('${frontmatter.heroImage}') ;`}
+    >
+    </div>
+    <div class="text-center">
+      <h1 class="mt-4 text-2xl text-bold">{frontmatter.title}</h1>
+      <p class="mb-4 text-gray-500 dark:text-gray-400">
+        <span class="text-bold">{frontmatter.author}</span>
+        -
+        <span class="text-sm">{frontmatter.date}</span>
+      </p>
+    </div>
+    <slot />
+  </div>
 </MainLayout>
 <style is:global>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 
-@layer base {
-  h1 {
-    @apply text-2xl mb-2 mt-4;
+  @layer base {
+    h1 {
+      @apply text-4xl mb-2 mt-4 font-semibold;
+    }
+    h2 {
+      @apply text-2xl mt-4 mb-2 font-semibold;
+    }
+    h3 {
+      @apply text-xl mt-4 mb-2 font-semibold;
+    }
+    pre {
+      @apply my-2 py-2 px-4 text-sm dark:!bg-zinc-900/[.5] !bg-zinc-700 overflow-x-auto w-screen -mx-4 md:w-auto md:mx-0 md:px-2 lg:text-base;
+    }
+
+    p {
+      @apply dark:text-gray-400 text-gray-500;
+    }
+
+    a {
+      @apply dark:text-gray-200 text-gray-700;
+    }
   }
-  h2 {
-    @apply text-xl my-2;
-  }
-  pre{
-    @apply rounded p-2 dark:!bg-zinc-900/[.5] !bg-zinc-700;
-  }
-}
 </style>
-

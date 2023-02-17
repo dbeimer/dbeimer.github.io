@@ -1,28 +1,40 @@
 ---
 import DarkButton from "../components/DarkButton";
-import {IoMenu} from "react-icons/io5";
-
+import { IoMenu } from "react-icons/io5";
 ---
-<div class="fixed w-full top-0 left-0 backdrop-blur-lg lg:rounded-none md:rounded-none rounded-xl bg-zinc-100/[.5] dark:bg-zinc-900/[.5]">
-<nav class="w-full">
-		<div class="flex flex-wrap px-4 lg:justify-between md:justify-between justify-center items-center mx-auto max-w-5xl">
-    <a href="http://localhost:3000/">
-			<span class="text-2xl py-4">dbeimer</span>  
-    </a>
-			<div class="hidden w-full md:block md:w-auto" id="navbar-default">
-			<ul class="flex flex-col p-4 mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 ">
-				<li class="pr-5">projects</li>
-				<li class="pr-5">Blog</li>
-				<li class="pr-5">Skills</li>
-				<li class="pr-5">About</li>
-			</ul>
-			</div>
-		<div>
-			<button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center ml-3 md:hidden focus:outline-none  text-xl hover:bg-zinc-500 p-1 rounded-md" aria-controls="navbar-default" aria-expanded="false">
-				<IoMenu/>
-			</button>
-				<DarkButton client:only="react" dark={true}/>
-			</div>
-		</div>
-	</nav>
+
+<div
+  class="fixed w-full top-0 left-0 backdrop-blur-lg bg-zinc-100/[.5] dark:bg-zinc-900/[.5]"
+>
+  <nav class="w-full border-b dark:border-gray-500">
+    <div
+      class="flex flex-wrap px-4 justify-between items-center mx-auto max-w-5xl my-2 md:my-0"
+    >
+      <a href="http://localhost:3000/">
+        <span class="text-2xl">dbeimer</span>
+      </a>
+      <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+        <ul
+          class="flex flex-col p-4 mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0"
+        >
+          <li class="pr-5">projects</li>
+          <li class="pr-5">Blog</li>
+          <li class="pr-5">Skills</li>
+          <li class="pr-5">About</li>
+        </ul>
+      </div>
+      <div>
+        <button
+          data-collapse-toggle="navbar-default"
+          type="button"
+          class="inline-flex items-center ml-3 md:hidden focus:outline-none text-xl hover:bg-zinc-500 p-1 rounded-md"
+          aria-controls="navbar-default"
+          aria-expanded="false"
+        >
+          <IoMenu />
+        </button>
+        <DarkButton client:only="react" dark={true} />
+      </div>
+    </div>
+  </nav>
 </div>
