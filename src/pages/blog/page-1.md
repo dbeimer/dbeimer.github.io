@@ -4,7 +4,7 @@ title: "Installation and configuration for Matrix Synapse server"
 author: "Beimer Campos"
 date: "09 Aug 2022"
 description: "Follow the Matrix Synapse configuration from cero on unix systems, and publish it usign nginx."
-heroImage: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+# heroImage: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
 ---
 
 Esta es tu primer página de Markdown. Probablemente no tenga mucho estilo, aunque

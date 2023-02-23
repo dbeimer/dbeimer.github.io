@@ -2,6 +2,7 @@
 import ProjectCard from "../components/ProjectCard.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import JobItem from "../components/JobItem";
+import {DiCoda,DiCodeBadge} from "react-icons/di"
 
 let posts = await Astro.glob("../pages/blog/*.md");
 let projects = await Astro.glob("../pages/projects/*.md");
@@ -94,12 +95,13 @@ let skills = [
         projects.map((a, b) => (
           <a
             href={a.url}
-            class="shadow-lg rounded-lg transition ease-in-out delay-150 hover:shadow-2xl hover:-translate-y-1 duration-150"
+            class="shadow-lg rounded-lg transition ease-in-out delay-150"
           >
             <div
-              class="h-52 bg-gray-400/[.5] rounded-t-lg bg-no-repeat bg-center bg-cover"
-              style={`background-image: url('${a.frontmatter.heroImage}')`}
-            />
+              class="h-52 text-6xl bg-gray-400/[.5] rounded-t-lg bg-no-repeat bg-center bg-cover flex justify-center items-center"
+              style={`background-image: url('${a.frontmatter.heroImage}')`}>
+                {!a.frontmatter.heroImage?<DiCoda/>:''}
+              </div>
             <div class="text-center p-4">
               <h3 class="mb-2 text-bold text-lg">{a.frontmatter.title}</h3>
               <p class="text-gray-500 dark:text-gray-400">
@@ -126,12 +128,13 @@ let skills = [
         posts.map((a, b) => (
           <a
             href={a.url}
-            class="shadow-lg rounded-lg transition ease-in-out delay-150 hover:shadow-2xl hover:-translate-y-1 duration-150"
+            class="shadow-lg rounded-lg"
           >
             <div
-              class="h-60 bg-gray-400/[.5] rounded-t-lg bg-no-repeat bg-center bg-cover"
-              style={`background-image: url('${a.frontmatter.heroImage}')`}
-            />
+              class="h-60 text-6xl flex items-center justify-center bg-gray-400/[.5] rounded-t-lg bg-no-repeat bg-center bg-cover"
+              style={`background-image: url('${a.frontmatter.heroImage}')`}>
+                 {!a.frontmatter.heroImage?<DiCodeBadge/>:''}
+              </div>
             <div class="text-center p-4">
               <h3 class="mb-2 text-bold text-lg">{a.frontmatter.title}</h3>
               <p class="text-gray-500 dark:text-gray-400">

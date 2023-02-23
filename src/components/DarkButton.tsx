@@ -1,10 +1,7 @@
 import { IoMoon, IoSunny } from "react-icons/io5";
+import {useState,React} from "react"
 
 type Props = {};
-let dark =
-  localStorage.theme == "dark" ||
-  (!("theme" in localStorage) &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches);
 
 function activateTheme(dark = true) {
   const elemento = document.documentElement;
@@ -18,31 +15,19 @@ function activateTheme(dark = true) {
 }
 
 function DarkButton({}: Props) {
+  console.log(localStorage)
+  const [dark,setDark]=useState(localStorage.theme==="dark"??window.matchMedia("(prefers-color-scheme: dark)").matches)
 	activateTheme(dark)
+  function handleClick() {
+    setDark(!dark)
+    localStorage.theme=!dark?"dark":"light"
+  }
   return (
     <button
       className="text-xl border dark:border-zinc-500 dark:hover:bg-zinc-500 hover:bg-zinc-300 p-2 rounded-md"
-      onClick={() => {
-        //change
-        localStorage.theme = localStorage.theme == "dark" ? "light" : "dark";
-        activateTheme(localStorage.theme == "dark");
-        // if (
-        //   localStorage.theme == "dark"
-        // || (
-        //   !('theme' in localStorage)
-        //   && window.matchMedia('(prefers-color-scheme: dark)').matches)
-        // ) {
-        //   document.documentElement.classList.add("dark");
-        //   localStorage.theme = "dark";
-        // setTheme('ligth')
-        // } else {
-        //   document.documentElement.classList.remove("dark");
-        //   localStorage.removeItem("theme");
-        //   // setTheme('dark')
-        // }
-      }}
+      onClick={handleClick}
     >
-      {dark ? <IoSunny /> : <IoMoon />}
+      {dark ? <IoSunny className="hover:animate-spin" /> : <IoMoon />}
     </button>
   );
 }
