@@ -1,19 +1,23 @@
 import { useState } from "react";
 
-function activateDarkTheme(activate = true) {
-  let [darkTheme, enableDarkTheme] = useState(activate);
+function darkThemeHook() {
+  let [dark, setDark] = useState(localStorage.theme==="dark"??window.matchMedia("(prefers-color-scheme: dark)").matches);
 
-  const activateTheme = () => {
-    if (darkTheme) {
-      document.documentElement.classList.add("dark");
-      enableDarkTheme(true);
+  function activateTheme(dark = true) {
+    const elemento = document.documentElement;
+    localStorage.theme=dark?"dark":"light"
+    setDark(dark)
+
+    if (dark) {
+      if (!elemento.classList.contains("dark")) {
+        elemento.classList.add("dark");
+      }
     } else {
-      document.documentElement.classList.remove("dark");
-      enableDarkTheme(false);
+      elemento.classList.remove("dark");
     }
-  };
+  }
 
-  return [darkTheme, activateTheme];
+  return [dark, activateTheme];
 }
 
-export { activateDarkTheme };
+export { darkThemeHook };
