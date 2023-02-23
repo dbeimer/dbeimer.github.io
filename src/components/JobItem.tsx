@@ -9,13 +9,13 @@ function JobItem(props) {
     periodColorClass="bg-green-700"
     simbol=" + "
   }
-    return <div class={"border-l-2 px-4 pb-4 my-4 "+colorClass}>
+    return <div className={"border-l-2 px-4 pb-4 my-4 "+colorClass}>
         <span>{simbol}</span><b>{props.company}</b>
         <div>
-          <span>{simbol}</span><span class="text-l">{props.jobTitle+' '}</span> 
-          <span>{simbol}</span><span class={"text-white rounded-lg text-sm px-2 "+periodColorClass}>{props.period}</span>
+          <span>{simbol}</span><span className="text-l">{props.jobTitle+' '}</span> 
+          <span>{simbol}</span><span className={"text-white rounded-lg text-sm px-2 "+periodColorClass}>{props.period}</span>
         </div>
-        <p class="text-gray-500 dark:text-gray-400">
+        <p className="text-gray-500 dark:text-gray-400">
           {props.description}
         </p>
       </div>
