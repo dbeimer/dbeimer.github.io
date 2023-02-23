@@ -5,6 +5,44 @@ import JobItem from "../components/JobItem";
 
 let posts = await Astro.glob("../pages/blog/*.md");
 let projects = await Astro.glob("../pages/projects/*.md");
+let jobs = [
+  {
+    position: "Cloud Developer",
+    company: "FOCO ESTRATÉGICO S.A.C.",
+    description:
+      "Mantenimiento del sistema principal, desarrollo de APIs, microservicios, NodeJS, Python",
+    period: "15/03/2021-Actualmente",
+  },
+  {
+    position: "Analista Programador",
+    company: "BEAGLE COURIER S.A.C.",
+    description:
+      "Mantenimiento del sistema de operaciones, administración de bases de datos MySQL,PHP, Flutter",
+    period: "01/06/2020-13/03/2021",
+  },
+  {
+    position: "Programador Junior",
+    company: "BEAGLE COURIER S.A.C.",
+    description:
+      "Creación de reportería con PHP, HTML y Javascript de las operaciónes de la empresa",
+    period: "10/06/2019-31/05/2020",
+  },
+];
+
+let skills = [
+  { name: "NodeJS" },
+  { name: "NestJS" },
+  { name: "Python" },
+  { name: "Linux" },
+  { name: "HTML5" },
+  { name: "Linux" },
+  { name: "APIs REST" },
+  { name: "BigQuery" },
+  { name: "Mongo" },
+  { name: "Postgres" },
+  { name: "RabbitMQ" },
+  { name: "Git & Github" },
+];
 ---
 
 <MainLayout>
@@ -12,7 +50,7 @@ let projects = await Astro.glob("../pages/projects/*.md");
     <img src="/profile.jpeg" class="shadow md:w-80 rounded-lg" />
     <div class="h-fit md:pl-4">
       <h1 class="text-3xl my-4 text-center md:text-left">Hola, aquí Beimer</h1>
-      <p class="md:mt-5 text-gray-500 dark:text-gray-400">
+      <p class="md:mt-5 text-gray-500 dark:text-gray-400 text-justify">
         Soy PROGRAMADOR BACKEND, actualmente trabajo con los lenguajes de NodeJS
         y Python, tengo experiencia en procesamiento de datos tipo batch,
         desarrollo de APIs REST y administración de bases de datos SQL y noSQL
@@ -21,42 +59,36 @@ let projects = await Astro.glob("../pages/projects/*.md");
         aprendiendo cosas al respecto, si tienes una empresa puedo ayudarte con
         mis servicios y si eres programador podemos compartir retos juntos.
       </p>
-    </div>
-  </section>
-
-  <section class="mt-5">
-    <h2 class="text-xl my-2">Profesional Skills</h2>
-    <div>
-      <div class="grid sm:grid-cols-6 grid-cols-3 gap-3 place-items-center">
-        <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit">NodeJS</div>
-        <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit">NestJS</div>
-        <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit">Python</div>
-        <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit">HTML5</div>
-        <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit">RabbitMQ</div>
-        <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit">
-          PostgreSQL
-        </div>
-        <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit">MongoDB</div>
-        <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit">BigQuery</div>
-        <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit">linux</div>
-        <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit">APIs Rest</div>
-        <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit">
-          Git & GitHub
-        </div>
+      <div class="mt-4 flex justify-around md:justify-between lg:justify-end">
+        <button
+          class="bg-purple-300/70 hover:bg-purple-300 text-purple-900 border border-purple-300 rounded-md py-1 px-3"
+          >Contactar</button
+        >
+        <a
+          target="_blank"
+          class="bg-green-300/70 hover:bg-green-300 hover:text-green-900 border border-green-300 rounded-md px-3 py-1 ml-2"
+          href="/CV.pdf">Download CV</a
+        >
       </div>
     </div>
   </section>
-  <section>
-    <h2 class="text-xl my-2">Laboral experience</h2>
+  <h2 class="text-xl mt-4 text-center">Profesional Skills</h2>
+  <section class="">
     <div>
-      <JobItem jobTitle="Cloud Developer" />
-      <JobItem />
-      <JobItem />
+      <div class="grid sm:grid-cols-6 grid-cols-3 gap-3 place-items-center">
+        {
+          skills.map((skill) => (
+            <div class="bg-gray-50/10 border border-gray-500 dark:text-gray-300  rounded-xl px-3 py-1 w-fit">
+              {skill.name}
+            </div>
+          ))
+        }
+      </div>
     </div>
   </section>
 
+  <h2 class="text-xl text-center">Algunos de mis Proyectos</h2>
   <section class="mt-5">
-    <h2 class="text-xl my-2">Projects</h2>
     <div class="grid md:grid-cols-2 gap-4">
       {
         projects.map((a, b) => (
@@ -87,8 +119,8 @@ let projects = await Astro.glob("../pages/projects/*.md");
     </center>
   </section>
 
+  <h2 class="text-xl my-2 text-center">Posts</h2>
   <section class="mt-5">
-    <h2 class="text-xl my-2">Posts</h2>
     <div class="grid md:grid-cols-2 gap-4">
       {
         posts.map((a, b) => (
@@ -108,6 +140,22 @@ let projects = await Astro.glob("../pages/projects/*.md");
               </p>
             </div>
           </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section>
+    <h2 class="text-xl my-2 text-center">Laboral experience</h2>
+    <div>
+      {
+        jobs.map((job) => (
+          <JobItem
+            jobTitle={job.position}
+            period={job.period}
+            company={job.company}
+            description={job.description}
+          />
         ))
       }
     </div>

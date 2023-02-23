@@ -21,7 +21,7 @@ function DarkButton({}: Props) {
 	activateTheme(dark)
   return (
     <button
-      className="text-xl dark:hover:bg-zinc-500 hover:bg-zinc-300 p-1 rounded-md"
+      className="text-xl border dark:border-zinc-500 dark:hover:bg-zinc-500 hover:bg-zinc-300 p-2 rounded-md"
       onClick={() => {
         //change
         localStorage.theme = localStorage.theme == "dark" ? "light" : "dark";
