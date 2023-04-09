@@ -8,9 +8,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/react": "^2.1.1",
@@ -33,10 +31,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.32.2",
-    "gh-pages": "^5.0.0",
     "prettier": "^2.8.4",
     "sass": "^1.55.0",
     "typescript": "*"
-  },
-  "homepage": "https://dbeimer.github.io/page"
+  }
 }
