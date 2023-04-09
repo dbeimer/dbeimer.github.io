@@ -5,6 +5,8 @@ import JobItem from "../components/JobItem";
 import {DiCoda,DiCodeBadge} from "react-icons/di/index.js"
 import WrittingText from "../components/WrittingText";
 
+import profileImage from "../images/profile.jpeg"
+
 let posts = await Astro.glob("../pages/blog/*.md");
 let projects = await Astro.glob("../pages/projects/*.md");
 let jobs = [
@@ -49,7 +51,7 @@ let skills = [
 
 <MainLayout>
   <section class="w-full lg:pt-20 md:pt-20 md:flex md:items-center">
-    <img src="/profile.jpeg" class="shadow md:w-64 rounded-3xl" />
+    <img src={profileImage} class="shadow md:w-64 rounded-3xl" />
     <div class="h-fit md:pl-4">
       <h1 class="text-3xl my-4 text-center md:text-left">
         <WrittingText text="Hola, mi nombre es Beimer" client:only="react"/>
