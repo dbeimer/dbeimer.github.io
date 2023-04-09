@@ -7,7 +7,7 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), react()],
-  // site:'https://dbeimer.github.io/page',
+  site:'https://dbeimer.github.io/page',
   // base:'/page',
   markdown: {
     drafts: true,
