@@ -1,0 +1,79 @@
+---
+import ProjectCard from "../components/ProjectCard.astro";
+import MainLayout from '../layouts/MainLayout.astro'
+
+let posts=await Astro.glob('../pages/blog/*.md')
+let projects=await Astro.glob('../pages/projects/*.md')
+---
+<MainLayout>
+  <section class="w-full lg:pt-20 md:pt-20  md:flex md:items-center">
+		<img src="/profile.jpeg" class="shadow md:w-80 md:rounded-lg">
+    <div class="h-fit md:pl-4">
+      <h1 class="text-3xl my-4 text-center md:text-left">Hi, I'm Beimer</h1>
+      <p class="md:mt-5 text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe illo corporis consectetur explicabo animi ipsum porro, exercitationem laudantium quo veniam error, magnam at. Aliquid omnis adipisci vero fugiat doloribus explicabo quibusdam mollitia quas perferendis. Saepe excepturi ut unde pariatur molestiae veniam consequuntur laboriosam, itaque quidem sint magni velit reprehenderit amet?</p>
+    </div>
+	</section>
+
+	<section class="mt-5">
+		<h2 class="text-xl my-2">Profesional Skills</h2>
+    <div>
+    <div class="grid sm:grid-cols-6 grid-cols-3 gap-3 place-items-center">
+      <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit ">NodeJS</div>
+      <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit ">NestJS</div>
+      <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit ">Python</div>
+      <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit ">HTML5</div>
+      <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit ">RabbitMQ</div>
+      <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit ">PostgreSQL</div>
+      <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit ">MongoDB</div>
+      <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit ">BigQuery</div>
+      <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit ">linux</div>
+      <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit ">APIs Rest</div>
+      <div class="bg-gray-400/[.5] rounded-xl px-3 py-1 w-fit ">Git & GitHub</div>
+    </div>
+
+    </div>
+	</section>
+
+	<section class="mt-5">
+		<h2 class="text-xl my-2">Projects</h2>
+		<div class="grid md:grid-cols-2 gap-4">
+      {projects.map(
+        (a,b) =>(
+          <a href={a.url} class="shadow-lg rounded-lg transition ease-in-out delay-150 hover:shadow-2xl hover:-translate-y-1 duration-150">
+              <div class="h-52 bg-gray-400/[.5] rounded-t-lg bg-no-repeat bg-center bg-cover" 
+              style={`background-image: url('${a.frontmatter.heroImage}')`}>
+              </div>
+              <div class="text-center p-4">
+                <h3 class="mb-2 text-bold text-lg">{a.frontmatter.title}</h3>
+                <p class="text-gray-500 dark:text-gray-400">{a.frontmatter.description??'This project does not have a description'}</p>
+              </div>
+          </a>
+      ))}
+		</div>
+    <center>
+      <button class="bg-cyan-600 dark:bg-cyan-400 py-2 px-4 my-4 rounded text-cyan-900 shadow-md">My porfolio</button>
+    </center>
+	</section>
+
+	<section class="mt-5">
+		<h2 class="text-xl my-2">Posts</h2>
+		<div class="grid md:grid-cols-2 gap-4">
+      {posts.map(
+        (a,b) =>(
+          <a href={a.url} class="shadow-lg rounded-lg transition ease-in-out delay-150 hover:shadow-2xl hover:-translate-y-1 duration-150">
+              <div class="h-60 bg-gray-400/[.5] rounded-t-lg bg-no-repeat bg-center bg-cover" 
+              style={`background-image: url('${a.frontmatter.heroImage}')`}>
+              </div>
+              <div class="text-center p-4">
+                <h3 class="mb-2 text-bold text-lg">{a.frontmatter.title}</h3>
+                <p class="text-gray-500 dark:text-gray-400">{a.frontmatter.description??'This post does not have a description'}</p>
+              </div>
+          </a>
+      ))}
+		</div>
+	</section>
+
+	<section class="mt-5">
+		<h2 class="text-xl">Diplomas & Cursos</h2>
+	</section>
+</MainLayout>

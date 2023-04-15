@@ -1,0 +1,13 @@
+---
+const {title,imgUrl,description,url}= Astro.props
+---
+<div class="shadow-lg mt-3 w-full rounded-lg md:mt-0">
+  <div class="bg-gray-400/[.5] h-36 rounded-t-lg">
+  </div>
+  <div class="p-4">
+    <a href={url}>
+      <h3 class="text-lg cursor-pointer">{title}</h3>
+    </a>
+    <p class="opacity-70">{description}</p>
+  </div>
+</div>
