@@ -8,7 +8,7 @@ import react from "@astrojs/react";
 export default defineConfig({
   integrations: [tailwind(), react()],
   site:'https://dbeimer.github.io/',
-  base:'/page',
+  // base:,
   markdown: {
     drafts: true,
     // remarkPlugins: [imageHeroRemark]

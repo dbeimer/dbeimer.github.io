@@ -16,7 +16,7 @@ function Nav({}: Props) {
         <div
           className="flex flex-wrap px-6 justify-between items-center mx-auto max-w-5xl my-2 md:my-0"
         >
-          <a href="/page/">
+          <a href="/">
             <span className="text-2xl">dbeimer</span>
           </a>
           <div className={"w-full md:block md:w-auto hidden"} id="navbar-default">
