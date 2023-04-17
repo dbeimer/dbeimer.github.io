@@ -1,6 +1,7 @@
 import { React,useState } from "react"
 import DarkButton from "./DarkButton";
 import MenuButton from "./MenuButton";
+import {DiGithubAlt} from "react-icons/di/index.js"
 
 type Props = {};
 
@@ -23,9 +24,14 @@ function Nav({}: Props) {
             <ul
               className="flex flex-col p-4 mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0"
             >
-              <li className="pr-5">Proyectos</li>
-              <li className="pr-5">Blog</li>
-              <li className="pr-5">Inicio</li>
+              <li className="pr-5">
+                <a href="/blog">Blog</a>
+              </li>
+              <li className="pr-5">
+                <a href="/projects">Proyectos</a>
+              </li>
+              <li className="pr-5 text-2xl"><a href="https://github.com/dbeimer" target="_blank"><DiGithubAlt/></a></li>
+              {/* <li className="pr-5">Inicio</li> */}
             </ul>
           </div>
           <div>
@@ -36,6 +42,9 @@ function Nav({}: Props) {
               console.log('ShowMenu',showMenu)
             }}/>
             <DarkButton/>
+            {/* <button className="text-[20pt] border p-1 rounded">
+              <DiGithubAlt/>
+            </button> */}
           </div>
         </div>
       </nav>

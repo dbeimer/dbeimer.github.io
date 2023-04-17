@@ -1,0 +1,26 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+let posts = await Astro.glob("../pages/blog/*.md");
+---
+<MainLayout>
+  <div class="mt-16">
+</div>
+  <section class="w-full mb-4">
+    <input type="text" class="h-11 w-full boder rounded px-4 bg-transparent focus:border-b" placeholder="buscar...">
+    <!-- <button class="bg-black text-white px-4 py-2">Buscar</button> -->
+  </section>
+  <section>
+  {posts.map(post=>(
+    <div class="border-b mb-3 px-4 w-full">
+      <a href={post.url}>
+        <h3>{post.frontmatter.title}</h3>
+      </a>
+      <p>{post.frontmatter.description}</p>
+    </div>
+  ))}
+  </section>
+  <script type="module">
+    console.log(posts)
+
+  </script>
+</MainLayout>
