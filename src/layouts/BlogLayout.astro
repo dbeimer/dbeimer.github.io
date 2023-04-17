@@ -12,12 +12,13 @@ const { frontmatter } = Astro.props;
 ---
 
 <MainLayout>
-  <div>
+  <div class="mt-16">
+    
     <div
       class={`h-80 bg-cover bg-center ${
-        frontmatter.heroImage ? "" : "bg-purple-300"
+        frontmatter.heroImage ? "" : "hidden"
       } -mx-6 md:rounded`}
-      style={`background-image:url('${frontmatter.heroImage}') ;`}
+      style={`background-image:url('${frontmatter.heroImage}') ;display:${!frontmatter.heroImage}`}
     >
     </div>
     <div class="text-center">
