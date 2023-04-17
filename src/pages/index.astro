@@ -50,7 +50,7 @@ let skills = [
 ---
 
 <MainLayout>
-  <section class="w-full lg:pt-20 md:pt-20 md:flex md:items-center">
+  <section class="w-full lg:pt-20 md:pt-20 md:flex md:items-center mb-16">
     <img src={profileImage} class="shadow md:w-64 rounded-3xl" />
     <div class="h-fit md:pl-4">
       <h1 class="text-3xl my-4 text-center md:text-left">
@@ -79,7 +79,7 @@ let skills = [
     </div>
   </section>
   <h2 class="text-xl mt-4 text-center">Profesional Skills</h2>
-  <section class="">
+  <section class="mb-16">
     <div>
       <div class="grid sm:grid-cols-6 grid-cols-3 gap-3 place-items-center">
         {
@@ -94,13 +94,14 @@ let skills = [
   </section>
 
   <h2 class="text-xl text-center">Algunos de mis Proyectos</h2>
-  <section class="mt-5">
-    <div class="grid md:grid-cols-2 gap-4">
+  <section class="mb-16">
+    <div class="flex flex-wrap">
+    <!-- <div class="grid md:grid-cols-2 gap-4"> -->
       {
         projects.map((a, b) => (
           <a
             href={a.url}
-            class="shadow-lg rounded-lg transition ease-in-out delay-150"
+            class="shadow-lg rounded-lg transition ease-in-out delay-150 w-full"
           >
             <div
               class="h-52 text-6xl bg-gray-400/[.5] rounded-t-lg bg-no-repeat bg-center bg-cover flex justify-center items-center"
@@ -127,7 +128,7 @@ let skills = [
   </section>
 
   <h2 class="text-xl my-2 text-center">Posts</h2>
-  <section class="mt-5">
+  <section class="mb-16">
     <div class="grid md:grid-cols-2 gap-4">
       {
         posts.map((a, b) => (
@@ -154,7 +155,7 @@ let skills = [
   </section>
 
   <section>
-    <h2 class="text-xl my-2 text-center">Laboral experience</h2>
+    <h2 class="text-xl my-2 text-center">Experiencia Laboral</h2>
     <div>
       {
         jobs.map((job) => (
