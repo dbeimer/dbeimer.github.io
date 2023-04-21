@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beimer Campos</title>
+<link rel="stylesheet" href="/assets/blog.f9160356.css" />
+<link rel="stylesheet" href="/assets/config-prettier-and-eslint-in-nodejs.c0b7162e.css" /><script type="module">const e=document.documentElement,s=localStorage.theme==="dark";s?e.classList.contains("dark")||e.classList.add("dark"):e.classList.remove("dark");
+</script></head>
+<body class="bg-white dark:bg-zinc-800 dark:text-zinc-300 grid place-items-center bg-no-repeat bg-auto">
+  <!-- <Nav/> -->
+  <style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).only=t=>{(async()=>await(await t())())()},window.dispatchEvent(new Event("astro:only"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="19W0rq" component-url="/Nav.84d1056a.js" component-export="default" renderer-url="/client.02687e2a.js" props="{}" ssr="" client="only" opts="{&quot;name&quot;:&quot;NavAlter&quot;,&quot;value&quot;:&quot;react&quot;}"></astro-island>
+  <div class="max-w-5xl px-6">
+  <div class="mt-16">
+    
+    <div class="h-80 bg-cover bg-center  -mx-6 md:rounded" style="background-image:url('/schemmer.png') ;display:false">
+    </div>
+    <div class="text-center">
+      <h1 class="mt-4 text-2xl text-bold">Generador de Esquemas de Datos y Objetos JavaScript</h1>
+      <p class="mb-4 text-gray-500 dark:text-gray-400">
+        <span class="text-bold">Beimer Campos</span>
+        -
+        <span class="text-sm">09 Aug 2022</span>
+      </p>
+    </div>
+    <p>Este proyecto surge como una respuesta a la necesidad de los desarrolladores backend de ahorrar tiempo y aumentar la eficiencia en la creación de tablas y objetos en base a archivos en formato CSV, XLSX o XLSD. La identificación manual de los tipos de datos y la creación de tablas SQL puede ser un proceso tedioso y que demanda de mucho tiempo.</p>
+<p>Con este programa, los desarrolladores pueden generar fácilmente DDL SQL, esquemas para tablas BigQuery y objetos JavaScript a partir de los datos contenidos en estos archivos. La detección automática de tipos de datos permite que el proceso sea más rápido, preciso y confiable, debido a que se genera en base a toda la data, permitiendo a los desarrolladores centrarse en la lógica de negocios en lugar de en la manipulación manual de datos.</p>
+<p>En resumen, este proyecto web es una solución eficiente para la creación de tablas SQL y objetos JavaScript a partir de archivos en formato CSV, XLSX o XLSD.</p>
+<p>Puedes encontrar probar este proyecto en el siguiente <a href="https://dbeimer.github.io/schemmer/">enlace</a> y el código del mismo se encuenta este este <a href="https://github.com/dbeimer/schemmer">repositorio de github</a>.</p>
+  </div>
+  </div>
+	<footer class="py-2 bg-zinc-200 dark:bg-zinc-900 w-full mt-5">
+  <div class="mx-auto text-center text-sm">
+   2023 created by dbeimer 
+  </div>
+  </footer>
+  
+</body>
+</html>

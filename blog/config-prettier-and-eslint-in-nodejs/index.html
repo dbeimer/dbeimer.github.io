@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beimer Campos</title>
+<link rel="stylesheet" href="/assets/blog.f9160356.css" />
+<link rel="stylesheet" href="/assets/config-prettier-and-eslint-in-nodejs.c0b7162e.css" /><script type="module">const e=document.documentElement,s=localStorage.theme==="dark";s?e.classList.contains("dark")||e.classList.add("dark"):e.classList.remove("dark");
+</script></head>
+<body class="bg-white dark:bg-zinc-800 dark:text-zinc-300 grid place-items-center bg-no-repeat bg-auto">
+  <!-- <Nav/> -->
+  <style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).only=t=>{(async()=>await(await t())())()},window.dispatchEvent(new Event("astro:only"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="19W0rq" component-url="/Nav.84d1056a.js" component-export="default" renderer-url="/client.02687e2a.js" props="{}" ssr="" client="only" opts="{&quot;name&quot;:&quot;NavAlter&quot;,&quot;value&quot;:&quot;react&quot;}"></astro-island>
+  <div class="max-w-5xl px-6">
+  <div class="mt-16">
+    
+    <div class="h-80 bg-cover bg-center hidden -mx-6 md:rounded" style="background-image:url('undefined') ;display:true">
+    </div>
+    <div class="text-center">
+      <h1 class="mt-4 text-2xl text-bold">Eslint &amp; Prettier en NodeJS</h1>
+      <p class="mb-4 text-gray-500 dark:text-gray-400">
+        <span class="text-bold">Beimer Campos</span>
+        -
+        <span class="text-sm">09 Aug 2022</span>
+      </p>
+    </div>
+    <p>Como desarrollador de seguro estas familiarizado con algunos de los principios relacionados a las buenas practicas al momento de escribir tu código, en este post te veremos como integrar dos de las herramientas más usadas para usar buenas practicas al momento de escribir código. Primero veamos de forma breve dos definiciones sencillas.</p>
+<h2 id="code-formatter">Code Formatter</h2>
+<p>Herramienta que se encarga de aplicar un estilo de codificación coherente y consistente en todo el proyecto, en pocas palabras se encarga de <strong>formatear</strong> el código según unas reglas establecidas. En nuestro caso esta herramienta es Prettier.</p>
+<h2 id="linter">Linter</h2>
+<p>Es igualmente una herramienta que se encarga de detectar errores y malas practicas en nuestro código, este tambien es configurable segun lo que se requiera, a diferencia de un formatter este va más alla de solamente el formato de la escritura, integrando cosas como la detección de variables no declaradas, funciones sin retorno y muchas cosas más que contribuyan con la <strong>calidad</strong> de nuestro código. En este caso el linter que usaremos es Eslint.</p>
+<h2 id="manos-a-la-obra">Manos a la obra!!</h2>
+<p>Ahora que ya conoces las definiciones base de lo que vamos a usar veamos como se integran estas herramientas.</p>
+<p>Para iniciar esto lo unico que necesitas es haber inicializado un projecto nodeJS, de no haberlo hecho ejecuta <code>npm init</code> en tu carpeta en la que deseas comenzar a trabajar.</p>
+<p>Instala eslint y prettier</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">npm i eslint prettier -D</span></span></code></pre>
+<p>Instala los paquetes para hacer que estas dos herramientas trabajen juntas sin interrumpirse la una a la otra.</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">npm i eslint-config-prettier eslint-plugin-prettier -D</span></span></code></pre>
+<p>Esto es lo único que se necesitas instalar para comenzar.</p>
+<p>Crea tu archivo <code>.prettierrc.js</code> si no lo has creado aún, aqui te dejo una configuración sencilla de las reglas que he usado en algunos proyectos.</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #79C0FF">module</span><span style="color: #C9D1D9">.</span><span style="color: #79C0FF">exports</span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">"singleQuote"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">true</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">"trailingComma"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"all"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">"printWidth"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">120</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">"useTabs"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">true</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">"semi"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">false</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>Generar el archivo de configuración de eslint, lo cual se hace ejecutando lo siguiente:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">npx eslint --init</span></span></code></pre>
+<p>Esto nos abríra una interacción solicitando más detalles de la configuración</p>
+<hr>
+<p>Una vez terminado esto te habrá generado el archivo <code>.eslintrc.js</code>.</p>
+<p>Ahora debemos modificar la propiedad <code>extends</code>(dentro de este archivo) de la siguiente forma:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #8B949E">// </span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FFA657">extends</span><span style="color: #C9D1D9">:[</span><span style="color: #A5D6FF">'standard'</span><span style="color: #C9D1D9">,</span><span style="color: #A5D6FF">'plugin:prettier/recommended'</span><span style="color: #C9D1D9">]</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #8B949E">//...</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>Esto es lo que se necesita para hacer que el linter integre la reglas configuradas en tu archivo <code>.prettierrc.js</code> en las reglas que usa para verificar el código.</p>
+<p>Ahora ya tienes configuradas las dos herramientas lo útimo que debes hacer es configurar a tu editor de código para que use el formato automático al momento de guardar, en este caso debes dejar prettier como predeterminado facilitandote más las cosas.</p>
+<p>Otra opción es una vez configuradas estas herramientas es usarlas a travéz de la linea de comandos o incluso integrarlas en los <code>pre-commits</code> dependiendo lo que mejor se adapte a lo que necesitas.</p>
+  </div>
+  </div>
+	<footer class="py-2 bg-zinc-200 dark:bg-zinc-900 w-full mt-5">
+  <div class="mx-auto text-center text-sm">
+   2023 created by dbeimer 
+  </div>
+  </footer>
+  
+</body>
+</html>
