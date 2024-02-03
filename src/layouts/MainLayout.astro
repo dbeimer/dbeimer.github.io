@@ -26,7 +26,7 @@ let year = moment().format('YYYY')
   <script>
 
     const elemento = document.documentElement;
-    const dark=localStorage.theme==="dark"??window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const dark=localStorage.theme==="dark"||window.matchMedia("(prefers-color-scheme: dark)").matches;
     if (dark) {
       if (!elemento.classList.contains("dark")) {
         elemento.classList.add("dark");

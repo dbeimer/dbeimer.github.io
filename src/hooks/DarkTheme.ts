@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function darkThemeHook() {
-  let [dark, setDark] = useState(localStorage.theme==="dark"??window.matchMedia("(prefers-color-scheme: dark)").matches);
+  let [dark, setDark] = useState(localStorage.theme==="dark"||window.matchMedia("(prefers-color-scheme: dark)").matches);
 
   function activateTheme(dark = true) {
     const elemento = document.documentElement;

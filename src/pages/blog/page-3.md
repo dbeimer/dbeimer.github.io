@@ -20,7 +20,7 @@ Luego inicializa las variables y crea la conexion
 RABBIT_URL = "amqps://[user]:[password]@[url]/[project]";
 
 const exchange = "bots_managements";
-const routingKey = "mibot.core.sms.management";
+const routingKey = "test.core.sms.management";
 const queue = "my_queue";
 
 // NOTE: creación de la conexión

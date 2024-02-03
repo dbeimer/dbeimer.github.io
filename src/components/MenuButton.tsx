@@ -1,4 +1,4 @@
-import { React } from "react"
+import React  from "react"
 import { IoMenu } from "react-icons/io5";
 
 type Props = {

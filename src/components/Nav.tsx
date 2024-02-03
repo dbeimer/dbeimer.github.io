@@ -1,4 +1,4 @@
-import { React,useState } from "react"
+import React,{useState } from "react"
 import DarkButton from "./DarkButton";
 import MenuButton from "./MenuButton";
 import {DiGithubAlt} from "react-icons/di/index.js"

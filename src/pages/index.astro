@@ -4,18 +4,25 @@ import MainLayout from "../layouts/MainLayout.astro";
 import JobItem from "../components/JobItem";
 import {DiCoda,DiCodeBadge} from "react-icons/di/index.js"
 import WrittingText from "../components/WrittingText";
+import { Image } from "astro:assets";
 
-import profileImage from "../images/profile.jpeg"
 
 let posts = await Astro.glob("../pages/blog/*.md");
 let projects = await Astro.glob("../pages/projects/*.md");
 let jobs = [
   {
+    position: "Backend Software Engineer",
+    company: "YAPE - BCP",
+    description:
+      "",
+    period: "08/2023-Actualmente",
+  },
+  {
     position: "Cloud Developer",
     company: "FOCO ESTRATÉGICO S.A.C.",
     description:
       "Mantenimiento del sistema principal, desarrollo de APIs, microservicios, NodeJS, Python",
-    period: "15/03/2021-Actualmente",
+    period: "15/03/2021-07/2023",
   },
   {
     position: "Analista Programador",
@@ -51,7 +58,11 @@ let skills = [
 
 <MainLayout>
   <section class="w-full lg:pt-20 md:pt-20 md:flex md:items-center mb-16">
-    <img src={profileImage} class="shadow md:w-64 rounded-3xl" />
+    <!-- <img src="/profile.jpeg" class="shadow md:w-64 rounded-3xl" /> -->
+    <Image src="/profile.jpeg"
+    width={100}
+    height={100}
+     alt="profile image" class="shadow w-fit md:w-64 rounded-3xl"></Image>
     <div class="h-fit md:pl-4">
       <h1 class="text-3xl my-4 text-center md:text-left">
         <WrittingText text="Hola, mi nombre es Beimer" client:only="react"/>
@@ -92,6 +103,7 @@ let skills = [
       </div>
     </div>
   </section>
+  
 
   <h2 class="text-xl text-center">Algunos de mis Proyectos</h2>
   <section class="mb-16">
