@@ -13,7 +13,7 @@
   "dependencies": {
     "@astrojs/react": "^3.0.9",
     "@astrojs/tailwind": "^5.1.0",
-    "astro": "^4.3.2",
+    "astro": "^4.16.18",
     "cheerio": "^1.0.0-rc.12",
     "moment": "^2.29.4",
     "react": "^18.2.0",
