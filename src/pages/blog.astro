@@ -11,11 +11,11 @@ let posts = await Astro.glob("../pages/blog/*.md");
   </section>
   <section>
   {posts.map(post=>(
-    <div class="border-b mb-3 px-4 w-full">
-      <a href={post.url}>
-        <h3>{post.frontmatter.title}</h3>
+    <div class="mb-6 w-full bg-white/70 dark:bg-[#181f3a]/80 border border-blue-200 dark:border-blue-900/40 rounded-xl shadow-md hover:shadow-xl transition p-5 group">
+      <a href={post.url} class="no-underline">
+        <h3 class="text-lg md:text-xl font-bold text-zinc-800 dark:text-zinc-100 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">{post.frontmatter.title}</h3>
       </a>
-      <p>{post.frontmatter.description}</p>
+      <p class="text-sm text-zinc-600 dark:text-zinc-300 mt-2">{post.frontmatter.description}</p>
     </div>
   ))}
   </section>

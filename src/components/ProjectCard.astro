@@ -1,13 +1,14 @@
 ---
-const {title,imgUrl,description,url}= Astro.props
+const { title, imgUrl, description, url } = Astro.props;
 ---
-<div class="shadow-lg mt-3 w-full rounded-lg md:mt-0">
-  <div class="bg-gray-400/[.5] h-36 rounded-t-lg">
-  </div>
-  <div class="p-4">
-    <a href={url}>
-      <h3 class="text-lg cursor-pointer">{title}</h3>
-    </a>
-    <p class="opacity-70">{description}</p>
-  </div>
-</div>
+<article class="shadow-md hover:shadow-xl transition-shadow duration-200 mt-4 w-full rounded-2xl bg-white/70 dark:bg-[#181f3a]/80 border border-blue-200 dark:border-blue-900/40 flex flex-col overflow-hidden">
+  <a href={url} target="_blank" rel="noopener noreferrer" class="group rounded-t-lg overflow-hidden block focus:outline-none focus:ring-2 focus:ring-zinc-400">
+    <div class="h-36 bg-gradient-to-tr from-zinc-300/40 to-zinc-400/60 dark:from-zinc-700/40 dark:to-sky-900/80 flex items-center justify-center border-b border-blue-100 dark:border-blue-900/30">
+      {imgUrl && <img src={imgUrl} alt={title} class="object-cover w-full h-full rounded-none transition-transform duration-300 group-hover:scale-105 group-hover:shadow-lg border border-blue-200/60 dark:border-blue-900/30" loading="lazy" />}
+    </div>
+    <div class="p-4">
+      <h3 class="text-lg font-semibold text-zinc-800 dark:text-zinc-100 group-hover:text-blue-700 transition-colors cursor-pointer">{title}</h3>
+      <p class="opacity-80 text-zinc-600 dark:text-zinc-300 mt-1 text-sm">{description}</p>
+    </div>
+  </a>
+</article>
