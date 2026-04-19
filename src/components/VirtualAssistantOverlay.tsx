@@ -25,7 +25,7 @@ export default function VirtualAssistantOverlay({ open, onClose }: VirtualAssist
 
   return (
     <div
-      className={"assistant fixed flex inset-0 z-[1000] bg-black/40 dark:bg-[#0a0a23]/60 backdrop-blur-sm" + (visible ? "" : " hidden")}
+      className={"assistant fixed flex inset-0 z-[1000] bg-white/80 dark:bg-black/80 backdrop-blur-sm" + (visible ? "" : " hidden")}
       onClick={e => {
         if (
           e.target === e.currentTarget ||
@@ -47,16 +47,13 @@ export default function VirtualAssistantOverlay({ open, onClose }: VirtualAssist
         />
       </div>
       <div className="fixed bottom-0 left-0 w-full z-50">
-        <div className="glass-futuristic-card max-w-2xl mx-auto px-6 py-5 rounded-t-2xl border border-white/40 backdrop-blur-lg flex flex-row items-center justify-center text-center relative"
-          style={{
-            background: "rgba(255,255,255,0.10)",
-          }}>
-          <span className="text-white text-base font-normal tracking-wide drop-shadow block w-full">
-            Esta funcionalidad está siendo construida 🚧<br />
-            Pronto podrás interactuar con un asistente virtual inteligente, capaz de responder preguntas, ayudarte a navegar el sitio y mucho más.
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 py-4 sm:py-5 border-t border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur-md flex flex-row items-center justify-center text-center relative">
+          <span className="text-xs sm:text-sm text-black/70 dark:text-white/70 tracking-wide block w-full pr-8">
+            Esta funcionalidad está siendo construida.<br />
+            Pronto podrás interactuar con un asistente virtual inteligente.
           </span>
           <button
-            className="absolute top-1 right-1 w-8 h-8 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/40 text-white text-xl font-bold backdrop-blur-md"
+            className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center hover:opacity-50 text-lg transition-opacity"
             onClick={onClose}
             aria-label="Cerrar"
             style={{ pointerEvents: 'auto' }}

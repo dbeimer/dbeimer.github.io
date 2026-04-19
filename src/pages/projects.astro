@@ -3,24 +3,53 @@ import MainLayout from "../layouts/MainLayout.astro";
 let projects = await Astro.glob("../pages/projects/*.md");
 ---
 <MainLayout>
-  <div class="mt-16">
-</div>
-  <section class="w-full mb-4">
-    <input type="text" class="h-11 w-full boder rounded px-4 bg-transparent focus:border-b" placeholder="buscar...">
-    <!-- <button class="bg-black text-white px-4 py-2">Buscar</button> -->
+  <div class="mt-16"></div>
+  <section class="w-full mb-8 hero-text-reveal">
+    <h1 class="font-mono text-base sm:text-lg font-semibold tracking-tight mb-6">Proyectos</h1>
+    <input
+      id="search-input"
+      type="text"
+      class="font-mono text-sm h-10 w-full border-b border-black/15 dark:border-white/15 px-0 bg-transparent focus:outline-none focus:border-black dark:focus:border-white tracking-wide transition-all duration-500"
+      placeholder="Buscar..."
+      autocomplete="off"
+    />
   </section>
-  <section>
-  {projects.map(post=>(
-    <div class="border-b mb-3 px-4 w-full">
-      <a href={post.url}>
-        <h3>{post.frontmatter.title}</h3>
-      </a>
-      <p>{post.frontmatter.description}</p>
-    </div>
+  <section id="search-list">
+  {projects.map((project, i) => (
+    <a
+      href={project.url}
+      class="search-item block mb-6 group no-underline reveal"
+      style={`transition-delay: ${i * 100}ms`}
+      data-title={project.frontmatter.title?.toLowerCase()}
+      data-desc={project.frontmatter.description?.toLowerCase()}
+    >
+      <div class="border-b border-black/8 dark:border-white/8 pb-5 group-hover:border-black dark:group-hover:border-white transition-all duration-500 group-hover:pl-3">
+        <h3 class="font-mono text-sm font-semibold transition-opacity duration-300 group-hover:opacity-70">{project.frontmatter.title}</h3>
+        <p class="text-xs text-black/40 dark:text-white/40 mt-1">{project.frontmatter.description}</p>
+      </div>
+    </a>
   ))}
   </section>
-  <script type="module">
-    console.log(posts)
-
-  </script>
+  <p id="no-results" class="hidden text-xs text-black/30 dark:text-white/30 font-mono tracking-wider mt-4">Sin resultados.</p>
 </MainLayout>
+<script>
+  const input = document.getElementById("search-input") as HTMLInputElement;
+  const items = document.querySelectorAll(".search-item");
+  const noResults = document.getElementById("no-results");
+
+  input?.addEventListener("input", () => {
+    const q = input.value.toLowerCase().trim();
+    let visible = 0;
+
+    items.forEach((item) => {
+      const el = item as HTMLElement;
+      const title = el.dataset.title || "";
+      const desc = el.dataset.desc || "";
+      const match = !q || title.includes(q) || desc.includes(q);
+      el.style.display = match ? "" : "none";
+      if (match) visible++;
+    });
+
+    if (noResults) noResults.classList.toggle("hidden", visible > 0);
+  });
+</script>

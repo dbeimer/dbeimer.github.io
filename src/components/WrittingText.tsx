@@ -20,7 +20,7 @@ const WrittingText: React.FC<WrittingTextProps> = ({ text, className = "" }) => 
       if (indexRef.current === text.length) {
         if (intervalRef.current) clearInterval(intervalRef.current);
       }
-    }, 80);
+    }, 60);
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
@@ -29,7 +29,7 @@ const WrittingText: React.FC<WrittingTextProps> = ({ text, className = "" }) => 
   return (
     <span className={className} aria-live="polite">
       {part}
-      <b className="animate-pulse text-blue-600 dark:text-blue-400">_</b>
+      <span className="terminal-cursor" />
     </span>
   );
 };

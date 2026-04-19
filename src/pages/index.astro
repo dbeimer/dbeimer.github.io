@@ -62,15 +62,15 @@ let skills = [
 
 <MainLayout>
   <HeroWithAssistant client:only="react" />
-  <h2 class="text-xl mt-4 text-center">Profesional Skills</h2>
-  <section class="mb-16">
+
+  <section class="mb-16 sm:mb-24 reveal">
+    <h2 class="font-mono text-base sm:text-lg font-semibold mb-4 sm:mb-6 tracking-tight">Skills</h2>
     <SkillsGrid client:only="react" />
   </section>
-  
 
-  <h2 class="text-xl text-center">Algunos de mis Proyectos</h2>
-  <section class="mb-16">
-    <div class={`grid gap-6 ${projects.length === 1 ? '' : 'md:grid-cols-2'}`}>
+  <section class="mb-16 sm:mb-24 reveal">
+    <h2 class="font-mono text-base sm:text-lg font-semibold mb-4 sm:mb-6 tracking-tight">Proyectos</h2>
+    <div class={`grid gap-px ${projects.length === 1 ? '' : 'md:grid-cols-2'}`}>
       {
         projects.map((a, b) => (
           <a
@@ -80,9 +80,9 @@ let skills = [
             <div
               class="card-image-top"
               style={`background-image: url('${a.frontmatter.heroImage}')`}>
-                {!a.frontmatter.heroImage?<DiCoda/>:''}
+                {!a.frontmatter.heroImage?<DiCoda className="text-4xl opacity-15"/>:''}
             </div>
-            <div class="text-center p-5">
+            <div class="text-center p-4 sm:p-6">
               <h3 class="card-title">{a.frontmatter.title}</h3>
               <p class="card-desc">
                 {a.frontmatter.description ??
@@ -93,17 +93,11 @@ let skills = [
         ))
       }
     </div>
-    <center>
-      <!-- <button
-        class="bg-cyan-600 dark:bg-cyan-400 py-2 px-4 my-4 rounded text-cyan-900 shadow-md"
-        >My porfolio</button
-      > -->
-    </center>
   </section>
 
-  <h2 class="text-xl my-2 text-center">Posts</h2>
-  <section class="mb-16">
-    <div class={`grid gap-6 ${posts.length === 1 ? '' : 'md:grid-cols-2'}`}>
+  <section class="mb-16 sm:mb-24 reveal">
+    <h2 class="font-mono text-base sm:text-lg font-semibold mb-4 sm:mb-6 tracking-tight">Posts</h2>
+    <div class={`grid gap-px ${posts.length === 1 ? '' : 'md:grid-cols-2'}`}>
       {
         posts.map((a, b) => (
           <a
@@ -113,9 +107,9 @@ let skills = [
             <div
               class="card-image-top"
               style={`background-image: url('${a.frontmatter.heroImage}')`}>
-                {!a.frontmatter.heroImage?<DiCodeBadge/>:''}
+                {!a.frontmatter.heroImage?<DiCodeBadge className="text-4xl opacity-15"/>:''}
             </div>
-            <div class="text-center p-5">
+            <div class="text-center p-4 sm:p-6">
               <h3 class="card-title">{a.frontmatter.title}</h3>
               <p class="card-desc">
                 {a.frontmatter.description ??
@@ -128,12 +122,11 @@ let skills = [
     </div>
   </section>
 
-  <section>
-    <h2 class="text-xl my-2 text-center">Experiencia Laboral</h2>
+  <section class="mb-16 sm:mb-20 reveal">
+    <h2 class="font-mono text-base sm:text-lg font-semibold mb-4 sm:mb-6 tracking-tight">Experiencia</h2>
     <ExperienceTimeline client:only="react" jobs={jobs} />
   </section>
 
   <section class="mt-5">
-    <!-- <h2 class="text-xl">Diplomas & Cursos</h2> -->
   </section>
 </MainLayout>

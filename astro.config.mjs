@@ -1,16 +1,20 @@
 import { defineConfig } from 'astro/config';
-// import { imageHeroRemark } from './remark-hero-image.mjs';
 import tailwind from "@astrojs/tailwind";
-
 import react from "@astrojs/react";
+import bwLight from './src/themes/bw-light.json';
+import bwDark from './src/themes/bw-dark.json';
 
-// https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), react()],
   site:'https://dbeimer.github.io/',
-  // base:,
   markdown: {
     drafts: true,
-    // remarkPlugins: [imageHeroRemark]
+    shikiConfig: {
+      themes: {
+        light: bwLight,
+        dark: bwDark,
+      },
+      wrap: true,
+    },
   }
 });

@@ -13,7 +13,10 @@ let year = moment().format("YYYY");
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Google tag (gtag.js) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CE5WTNCTXP"
     ></script>
     <script is:inline>
@@ -28,39 +31,36 @@ let year = moment().format("YYYY");
     <title>Beimer Campos</title>
   </head>
   <body
-    class="bg-[#f8fafd] dark:bg-[#0a0a23] text-zinc-900 dark:text-zinc-100 min-h-screen h-screen flex flex-col justify-between relative overflow-x-visible"
+    class="bg-white dark:bg-black text-black dark:text-white min-h-screen h-screen flex flex-col justify-between relative overflow-x-visible font-body antialiased dot-grid"
   >
+    <div class="noise-overlay" aria-hidden="true"></div>
+
     <NavAlter client:only="react" />
-    <main class="flex-1 flex flex-col items-center justify-center px-2 md:px-0">
-      <div class="max-w-3xl w-full mx-auto mt-24 mb-16 px-4 md:px-8">
+    <main class="flex-1 flex flex-col items-center justify-center px-0 relative z-10">
+      <div class="max-w-3xl w-full mx-auto mt-20 sm:mt-28 mb-12 sm:mb-16 px-4 sm:px-6 md:px-8">
         <slot />
       </div>
     </main>
     <footer
-      class="py-4 bg-zinc-200/90 dark:bg-[#111132]/80 w-full mt-8 border-t border-zinc-100 dark:border-blue-900/60 shadow-[0_0_32px_0_rgba(37,99,235,0.12)] backdrop-blur-xl relative z-10"
+      class="py-3 w-full mt-8 border-t border-black/10 dark:border-white/10 font-mono relative z-10"
     >
-      <div class="mx-auto text-center text-xs text-zinc-600 dark:text-zinc-300">
-        &copy; {year} creado por <a
-          href="https://github.com/dbeimer"
-          class="underline hover:text-blue-400 dark:hover:text-blue-300 transition-colors font-semibold"
-          >dbeimer</a
-        >
+      <div class="mx-auto flex items-center justify-between max-w-3xl px-4 sm:px-6 md:px-8 text-[9px] sm:text-[10px] tracking-wider text-black/30 dark:text-white/30">
+        <span>&copy; {year} dbeimer</span>
+        <span class="flex items-center gap-3">
+          <span class="status-dot"></span>
+          <a
+            href="https://github.com/dbeimer"
+            class="hover:text-black dark:hover:text-white transition-colors"
+            >github.com/dbeimer</a
+          >
+        </span>
       </div>
     </footer>
-    <style>
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        pointer-events: none;
-      }
-    </style>
-    <script>
+    <script is:inline>
       const elemento = document.documentElement;
-      const dark =
-        localStorage.theme === "dark" ||
-        window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const dark = "theme" in localStorage
+        ? localStorage.theme === "dark"
+        : window.matchMedia("(prefers-color-scheme: dark)").matches;
       if (dark) {
         if (!elemento.classList.contains("dark")) {
           elemento.classList.add("dark");
@@ -68,6 +68,21 @@ let year = moment().format("YYYY");
       } else {
         elemento.classList.remove("dark");
       }
+    </script>
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+      );
+      document.querySelectorAll(".reveal, .reveal-stagger").forEach((el) => {
+        observer.observe(el);
+      });
     </script>
   </body>
 </html>

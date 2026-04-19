@@ -12,7 +12,7 @@ const DarkButton: React.FC<DarkButtonProps> = ({ className = "" }) => {
     <button
       aria-label={dark ? "Activar modo claro" : "Activar modo oscuro"}
       title={dark ? "Modo claro" : "Modo oscuro"}
-      className={`text-xl border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-400 dark:border-zinc-500 dark:hover:bg-zinc-700 hover:bg-zinc-200 p-2 rounded-md ${className}`}
+      className={`text-lg transition-opacity duration-200 focus:outline-none hover:opacity-50 p-2 ${className}`}
       onClick={() => setDark(!dark)}
       type="button"
       role="switch"

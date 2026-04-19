@@ -1,0 +1,82 @@
+{
+  "name": "bw-dark",
+  "type": "dark",
+  "colors": {
+    "editor.background": "#161616",
+    "editor.foreground": "#cccccc"
+  },
+  "tokenColors": [
+    {
+      "scope": ["comment", "punctuation.definition.comment", "comment.block", "comment.line"],
+      "settings": { "foreground": "#505050", "fontStyle": "italic" }
+    },
+    {
+      "scope": ["string", "string.quoted", "string.template", "string.quoted.single", "string.quoted.double"],
+      "settings": { "foreground": "#909090" }
+    },
+    {
+      "scope": ["keyword", "keyword.control", "keyword.operator.new", "storage.type", "storage.modifier"],
+      "settings": { "foreground": "#ffffff", "fontStyle": "bold" }
+    },
+    {
+      "scope": ["entity.name.function", "support.function"],
+      "settings": { "foreground": "#e0e0e0" }
+    },
+    {
+      "scope": ["variable", "variable.other", "variable.parameter"],
+      "settings": { "foreground": "#bbbbbb" }
+    },
+    {
+      "scope": ["constant.numeric", "constant.language", "constant.character"],
+      "settings": { "foreground": "#aaaaaa" }
+    },
+    {
+      "scope": ["entity.name.type", "entity.name.class", "support.type", "support.class"],
+      "settings": { "foreground": "#e8e8e8" }
+    },
+    {
+      "scope": ["keyword.operator", "punctuation", "meta.brace"],
+      "settings": { "foreground": "#707070" }
+    },
+    {
+      "scope": ["entity.name.tag", "punctuation.definition.tag"],
+      "settings": { "foreground": "#d0d0d0" }
+    },
+    {
+      "scope": ["entity.other.attribute-name"],
+      "settings": { "foreground": "#909090" }
+    },
+    {
+      "scope": ["support.constant", "variable.other.constant"],
+      "settings": { "foreground": "#c8c8c8" }
+    },
+    {
+      "scope": ["meta.property-name", "support.type.property-name"],
+      "settings": { "foreground": "#b0b0b0" }
+    },
+    {
+      "scope": ["string.regexp"],
+      "settings": { "foreground": "#888888" }
+    },
+    {
+      "scope": ["punctuation.section", "punctuation.separator", "punctuation.terminator"],
+      "settings": { "foreground": "#666666" }
+    },
+    {
+      "scope": ["markup.heading"],
+      "settings": { "foreground": "#ffffff", "fontStyle": "bold" }
+    },
+    {
+      "scope": ["markup.bold"],
+      "settings": { "fontStyle": "bold" }
+    },
+    {
+      "scope": ["markup.italic"],
+      "settings": { "fontStyle": "italic" }
+    },
+    {
+      "scope": ["markup.inline.raw", "markup.fenced_code"],
+      "settings": { "foreground": "#999999" }
+    }
+  ]
+}

@@ -3,24 +3,56 @@ import MainLayout from "../layouts/MainLayout.astro";
 let posts = await Astro.glob("../pages/blog/*.md");
 ---
 <MainLayout>
-  <div class="mt-16">
-</div>
-  <section class="w-full mb-4">
-    <input type="text" class="h-11 w-full boder rounded px-4 bg-transparent focus:border-b" placeholder="buscar...">
-    <!-- <button class="bg-black text-white px-4 py-2">Buscar</button> -->
+  <div class="mt-16"></div>
+  <section class="w-full mb-8 hero-text-reveal">
+    <h1 class="font-mono text-base sm:text-lg font-semibold tracking-tight mb-6">Posts</h1>
+    <input
+      id="search-input"
+      type="text"
+      class="font-mono text-sm h-10 w-full border-b border-black/15 dark:border-white/15 px-0 bg-transparent focus:outline-none focus:border-black dark:focus:border-white tracking-wide transition-all duration-500"
+      placeholder="Buscar..."
+      autocomplete="off"
+    />
   </section>
-  <section>
-  {posts.map(post=>(
-    <div class="mb-6 w-full bg-white/70 dark:bg-[#181f3a]/80 border border-blue-200 dark:border-blue-900/40 rounded-xl shadow-md hover:shadow-xl transition p-5 group">
-      <a href={post.url} class="no-underline">
-        <h3 class="text-lg md:text-xl font-bold text-zinc-800 dark:text-zinc-100 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">{post.frontmatter.title}</h3>
-      </a>
-      <p class="text-sm text-zinc-600 dark:text-zinc-300 mt-2">{post.frontmatter.description}</p>
-    </div>
+  <section id="search-list">
+  {posts.map((post, i) => (
+    <a
+      href={post.url}
+      class="search-item block mb-6 group no-underline reveal"
+      style={`transition-delay: ${i * 100}ms`}
+      data-title={post.frontmatter.title?.toLowerCase()}
+      data-desc={post.frontmatter.description?.toLowerCase()}
+    >
+      <div class="border-b border-black/8 dark:border-white/8 pb-5 group-hover:border-black dark:group-hover:border-white transition-all duration-500 group-hover:pl-3">
+        <h3 class="font-mono text-sm font-semibold transition-opacity duration-300 group-hover:opacity-70">{post.frontmatter.title}</h3>
+        <p class="text-xs text-black/40 dark:text-white/40 mt-1">{post.frontmatter.description}</p>
+        {post.frontmatter.date && (
+          <span class="font-mono text-[10px] text-black/25 dark:text-white/25 mt-2 block tracking-wider">{post.frontmatter.date}</span>
+        )}
+      </div>
+    </a>
   ))}
   </section>
-  <script type="module">
-    console.log(posts)
-
-  </script>
+  <p id="no-results" class="hidden text-xs text-black/30 dark:text-white/30 font-mono tracking-wider mt-4">Sin resultados.</p>
 </MainLayout>
+<script>
+  const input = document.getElementById("search-input") as HTMLInputElement;
+  const items = document.querySelectorAll(".search-item");
+  const noResults = document.getElementById("no-results");
+
+  input?.addEventListener("input", () => {
+    const q = input.value.toLowerCase().trim();
+    let visible = 0;
+
+    items.forEach((item) => {
+      const el = item as HTMLElement;
+      const title = el.dataset.title || "";
+      const desc = el.dataset.desc || "";
+      const match = !q || title.includes(q) || desc.includes(q);
+      el.style.display = match ? "" : "none";
+      if (match) visible++;
+    });
+
+    if (noResults) noResults.classList.toggle("hidden", visible > 0);
+  });
+</script>

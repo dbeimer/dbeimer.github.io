@@ -1,5 +1,5 @@
 import { Github as LucideGithub } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DarkButton from "./DarkButton";
 import MenuButton from "./MenuButton";
 
@@ -7,6 +7,13 @@ interface NavProps { }
 
 const Nav: React.FC<NavProps> = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const handleMenuToggle = () => {
     setShowMenu((prev) => !prev);
@@ -17,41 +24,56 @@ const Nav: React.FC<NavProps> = () => {
   };
 
   return (
-    <header className="fixed w-full top-0 left-0 z-50 backdrop-blur-lg bg-white/80 dark:bg-[#111132]/70 dark:backdrop-blur-2xl shadow-lg border-b border-transparent dark:border-blue-900/60">
-      <div className="pointer-events-none absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-transparent to-sky-900/30 blur-2xl opacity-60 dark:opacity-80"></div>
-        <div className="absolute top-[-30%] left-1/2 -translate-x-1/2 w-[60vw] h-[20vw] bg-blue-700/20 rounded-full blur-2xl opacity-40"></div>
-      </div>
+    <header
+      className="fixed w-full top-0 left-0 z-50 backdrop-blur-md transition-all duration-500"
+      style={{
+        background: scrolled ? "rgba(255,255,255,0.92)" : "transparent",
+        borderBottom: scrolled ? "1px solid rgba(0,0,0,0.08)" : "1px solid transparent",
+      }}
+    >
+      <div
+        className="dark:block hidden absolute inset-0 transition-all duration-500"
+        style={{
+          background: scrolled ? "rgba(0,0,0,0.92)" : "transparent",
+          borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
+        }}
+      />
       <nav
-        className="w-full"
+        className="w-full relative z-10"
         role="navigation"
         aria-label="Navegación principal"
       >
-        <div className="flex flex-wrap px-6 justify-between items-center mx-auto max-w-5xl my-2 md:my-0">
-          <a href="/" className="focus:outline-none focus:ring-2 focus:ring-zinc-400 rounded">
-            <span className="text-2xl font-bold tracking-tight">dbeimer</span>
+        <div className="flex px-4 sm:px-6 justify-between items-center mx-auto max-w-5xl py-3">
+          <a href="/" className="focus:outline-none rounded">
+            <span className="glitch-hover font-mono text-base sm:text-lg font-semibold tracking-tight" data-text="dbeimer_">
+              dbeimer<span className="text-black/30 dark:text-white/30">_</span>
+            </span>
           </a>
           <div
             className={
-              `w-full md:block md:w-auto ${showMenu ? "" : "hidden"}`
+              `w-full md:block md:w-auto ${showMenu ? "block absolute top-full left-0 bg-white/95 dark:bg-black/95 backdrop-blur-md border-b border-black/10 dark:border-white/10" : "hidden"}`
             }
             id="navbar-default"
           >
-            <ul className="list-none flex flex-col p-4 mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0" role="menubar">
-              <li className="pr-5" role="none">
-                <a href="/blog" role="menuitem" className="hover:underline">Blog</a>
+            <ul className="list-none flex flex-col px-4 py-3 md:flex-row md:space-x-6 md:p-0 md:text-xs font-mono" role="menubar">
+              <li role="none" className="py-2 md:py-0">
+                <a href="/blog" role="menuitem" className="link-hover text-xs uppercase tracking-widest hover:opacity-50 transition-opacity pb-0.5">
+                  <span className="text-black/30 dark:text-white/30">/</span>blog
+                </a>
               </li>
-              <li className="pr-5" role="none">
-                <a href="/projects" role="menuitem" className="hover:underline">Proyectos</a>
+              <li role="none" className="py-2 md:py-0">
+                <a href="/projects" role="menuitem" className="link-hover text-xs uppercase tracking-widest hover:opacity-50 transition-opacity pb-0.5">
+                  <span className="text-black/30 dark:text-white/30">/</span>projects
+                </a>
               </li>
-              <li className="pr-5 text-2xl" role="none">
-                <a href="https://github.com/dbeimer" target="_blank" rel="noopener noreferrer" aria-label="GitHub" role="menuitem" className="transition-colors text-zinc-700 dark:text-zinc-100 hover:text-blue-600 dark:hover:text-blue-400">
-                  <LucideGithub className="w-6 h-6" />
+              <li role="none" className="py-2 md:py-0">
+                <a href="https://github.com/dbeimer" target="_blank" rel="noopener noreferrer" aria-label="GitHub" role="menuitem" className="transition-opacity hover:opacity-50 inline-flex items-center">
+                  <LucideGithub className="w-4 h-4" />
                 </a>
               </li>
             </ul>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             <MenuButton onClick={handleMenuToggle} ariaExpanded={showMenu} />
             <DarkButton />
           </div>
